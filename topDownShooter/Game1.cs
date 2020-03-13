@@ -13,12 +13,14 @@ namespace topDownShooter
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
+            graphics.PreferredBackBufferWidth = 800;
+            graphics.PreferredBackBufferHeight = 800;
             Content.RootDirectory = "Content";
         }
 
         protected override void Initialize()
         {
-           
+            Assets.LoadContent(Content);
 
             base.Initialize();
         }
@@ -28,7 +30,8 @@ namespace topDownShooter
         {
             
             spriteBatch = new SpriteBatch(GraphicsDevice);
-
+            Assets.CreatePixel(GraphicsDevice);
+            Map.BuildMap();
         }
 
 
@@ -41,7 +44,7 @@ namespace topDownShooter
         protected override void Update(GameTime gameTime)
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
+                Map.BuildMap();
 
             base.Update(gameTime);
         }
@@ -50,7 +53,11 @@ namespace topDownShooter
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-       
+            spriteBatch.Begin();
+
+            Map.DrawMap(spriteBatch);
+
+            spriteBatch.End();
 
             base.Draw(gameTime);
         }
