@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.Collections.Generic;
 
 namespace topDownShooter
 {
@@ -9,6 +10,7 @@ namespace topDownShooter
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+
 
         public Game1()
         {
@@ -28,10 +30,10 @@ namespace topDownShooter
 
         protected override void LoadContent()
         {
-            
             spriteBatch = new SpriteBatch(GraphicsDevice);
             Assets.CreatePixel(GraphicsDevice);
             Map.BuildMap();
+            ObjectManager.AddObject(new player());
         }
 
 
@@ -46,7 +48,9 @@ namespace topDownShooter
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Map.BuildMap();
 
-            base.Update(gameTime);
+            ObjectManager.Update();
+
+                base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
@@ -55,8 +59,7 @@ namespace topDownShooter
 
             spriteBatch.Begin();
 
-            Map.DrawMap(spriteBatch);
-
+            ObjectManager.Draw(spriteBatch);
             spriteBatch.End();
 
             base.Draw(gameTime);

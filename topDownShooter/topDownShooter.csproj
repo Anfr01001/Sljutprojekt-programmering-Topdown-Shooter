@@ -42,9 +42,14 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Assets.cs" />
+    <Compile Include="BaseObject.cs" />
     <Compile Include="Game1.cs" />
+    <Compile Include="ICollision.cs" />
     <Compile Include="Map.cs" />
     <Compile Include="MapBlock.cs" />
+    <Compile Include="MapBlockColission.cs" />
+    <Compile Include="ObjectManager.cs" />
+    <Compile Include="player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
