@@ -21,6 +21,10 @@ namespace topDownShooter {
 
         private Vector2 Oldpos = Vector2.Zero;
 
+        //båda dessa är temp används bara i en funktion
+        private float tempX;
+        private float tempY;
+
         public void Player() {
             
         }
@@ -33,6 +37,7 @@ namespace topDownShooter {
         }
 
         public void Collision(BaseObject col) {
+
             pos = Oldpos;
         }
 
@@ -43,34 +48,42 @@ namespace topDownShooter {
         }
 
         private void Movement() {
+
             Kstate = Keyboard.GetState();
 
             if (Kstate.IsKeyDown(Keys.W)) {
                 velocity.Y -= speed;
+                texture = Assets.PlayerBack;
             }
 
             if (Kstate.IsKeyDown(Keys.S)) {
                 velocity.Y += speed;
+                texture = Assets.PlayerFront;
+
             }
 
             if (Kstate.IsKeyDown(Keys.D)) {
                 velocity.X += speed;
+                texture = Assets.PlayerRight;
             }
 
             if (Kstate.IsKeyDown(Keys.A)) {
                 velocity.X -= speed;
+                texture = Assets.PlayerLeft;
             }
 
-            if(!Kstate.IsKeyDown(Keys.A) && !Kstate.IsKeyDown(Keys.S) && !Kstate.IsKeyDown(Keys.W)) {
+            //Sakta ner om ingen knapp är tryckt
+            if(!Kstate.IsKeyDown(Keys.S) && !Kstate.IsKeyDown(Keys.W)) {
                 velocity.Y *= 0.2f;
                 
             }
 
-            if(!Kstate.IsKeyDown(Keys.A) && !Kstate.IsKeyDown(Keys.D)) {
+            //Sakta ner om ingen knapp är tryckt
+            if (!Kstate.IsKeyDown(Keys.A) && !Kstate.IsKeyDown(Keys.D)) {
                 velocity.X *= 0.2f;
             }
 
-            //kolla så det inte är för högt
+            //begränsa hastigheten 
             if (velocity.X > 4) {
                 velocity.X = 4;
             }

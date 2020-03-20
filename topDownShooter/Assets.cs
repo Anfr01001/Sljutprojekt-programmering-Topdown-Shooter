@@ -18,6 +18,7 @@ namespace topDownShooter {
         public static Texture2D PlayerFront;
         public static Texture2D PlayerBack;
         public static Texture2D PlayerRight;
+        public static Texture2D PlayerLeft;
         public static Texture2D PlayerDead;
 
         public static void CreatePixel(GraphicsDevice device) {
@@ -33,6 +34,7 @@ namespace topDownShooter {
             PlayerFront = content.Load<Texture2D>("Player Front");
             PlayerBack = content.Load<Texture2D>("Player Back");
             PlayerRight = content.Load<Texture2D>("Player Right");
+            PlayerLeft = content.Load<Texture2D>("Player Left");
             PlayerDead = content.Load<Texture2D>("Player dead");
 
         }

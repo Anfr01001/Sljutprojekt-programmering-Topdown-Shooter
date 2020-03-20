@@ -14,8 +14,10 @@ namespace topDownShooter {
         protected Color color = Color.White;
         protected int size = 50;
         protected Texture2D texture = Assets.Pixel;
+        public Vector2 center; 
 
         public virtual void Update() {
+            center = new Vector2(pos.X + (size / 2), pos.Y + (size / 2));
         }
 
         public virtual void Draw(SpriteBatch spriteBatch) {
