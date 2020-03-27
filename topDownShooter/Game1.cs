@@ -18,6 +18,7 @@ namespace topDownShooter
             graphics.PreferredBackBufferWidth = 800;
             graphics.PreferredBackBufferHeight = 800;
             Content.RootDirectory = "Content";
+            this.IsMouseVisible = true;
         }
 
         protected override void Initialize()
@@ -48,7 +49,7 @@ namespace topDownShooter
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Map.BuildMap();
 
-            ObjectManager.Update();
+                ObjectManager.Update(gameTime);
 
                 base.Update(gameTime);
         }

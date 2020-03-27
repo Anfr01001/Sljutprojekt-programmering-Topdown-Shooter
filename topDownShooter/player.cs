@@ -42,8 +42,11 @@ namespace topDownShooter {
         }
 
 
-        public override void Update() {
+        public override void Update(GameTime gameTime) {
             texture = Assets.PlayerFront;
+            if (Mouse.GetState().LeftButton == ButtonState.Pressed) {
+                ObjectManager.newPistolBullet(Mouse.GetState().Position.ToVector2(), pos);
+            }
             Movement();
         }
 

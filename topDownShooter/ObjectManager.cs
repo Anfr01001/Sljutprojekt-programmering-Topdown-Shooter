@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,10 +12,12 @@ namespace topDownShooter {
         static List<BaseObject> Allobjects = new List<BaseObject>();
         static List<ICollision> collidableObjects = new List<ICollision>();
 
+        static List<bulletBase> bulletList = new List<bulletBase>();
 
-        public static void Update() {
+
+        public static void Update(GameTime gameTime) {
             foreach (BaseObject obj in Allobjects) {
-                obj.Update();
+                obj.Update(gameTime);
             }
 
             for (int i = 0; i < collidableObjects.Count; i++) {
@@ -29,6 +32,7 @@ namespace topDownShooter {
                 }
 
             }
+
         }
 
         public static void AddObject(BaseObject obj) {
@@ -38,11 +42,14 @@ namespace topDownShooter {
         }
 
         public static void Draw(SpriteBatch spriteBatch) {
-            Map.DrawMap(spriteBatch);
 
             foreach (BaseObject obj in Allobjects) {
                 obj.Draw(spriteBatch);
             }
+        }
+
+        public static void newPistolBullet(Vector2 target, Vector2 orgpos) {
+            Allobjects.Add(new PistolBullet(target, orgpos));
         }
 
     }

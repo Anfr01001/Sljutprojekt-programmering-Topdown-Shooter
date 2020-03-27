@@ -16,7 +16,7 @@ namespace topDownShooter {
         protected Texture2D texture = Assets.Pixel;
         public Vector2 center; 
 
-        public virtual void Update() {
+        public virtual void Update(GameTime gameTime) {
             center = new Vector2(pos.X + (size / 2), pos.Y + (size / 2));
         }
 
