@@ -14,7 +14,8 @@ namespace topDownShooter {
         protected Color color = Color.White;
         protected int size = 50;
         protected Texture2D texture = Assets.Pixel;
-        public Vector2 center; 
+        public Vector2 center;
+        public bool dead = false;
 
         public virtual void Update(GameTime gameTime) {
             center = new Vector2(pos.X + (size / 2), pos.Y + (size / 2));

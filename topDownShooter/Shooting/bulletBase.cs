@@ -6,10 +6,26 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace topDownShooter {
-    class bulletBase : BaseObject {
+    class bulletBase : BaseObject, ICollision {
 
-        public bulletBase(Vector2 target) {
+        protected BaseObject shooter;
 
+        public bulletBase() {
+
+        }
+
+        public Rectangle CollisionBox {
+            get {
+                return rectangle;
+            }
+            set { rectangle = value; }
+        }
+
+        public void Collision(BaseObject obj) {
+            if(obj != shooter && !(obj is bulletBase)) {
+                dead = true;
+                //Om object kan ta damage gör det
+            }
         }
 
         public void update(GameTime gameTime) {

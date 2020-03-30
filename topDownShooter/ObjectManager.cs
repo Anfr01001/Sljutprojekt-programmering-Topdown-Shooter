@@ -11,13 +11,18 @@ namespace topDownShooter {
 
         static List<BaseObject> Allobjects = new List<BaseObject>();
         static List<ICollision> collidableObjects = new List<ICollision>();
+        static List<BaseObject> ObjectsToAdd = new List<BaseObject>();
+        static List<BaseObject> ObjectsToRemove = new List<BaseObject>();
 
         static List<bulletBase> bulletList = new List<bulletBase>();
 
 
         public static void Update(GameTime gameTime) {
             foreach (BaseObject obj in Allobjects) {
-                obj.Update(gameTime);
+                if (!obj.dead)
+                    obj.Update(gameTime);
+                else
+                    ObjectsToRemove.Add(obj);
             }
 
             for (int i = 0; i < collidableObjects.Count; i++) {
@@ -33,12 +38,28 @@ namespace topDownShooter {
 
             }
 
+            foreach (BaseObject obj in ObjectsToAdd) {
+                Allobjects.Add(obj);
+                if (obj is ICollision)
+                    collidableObjects.Add(obj as ICollision);
+            }
+
+            ObjectsToAdd.Clear();
+
+            foreach (BaseObject obj in ObjectsToRemove) {
+                Allobjects.Remove(obj);
+                if (obj is ICollision)
+                    collidableObjects.Remove(obj as ICollision);
+            }
+
+            ObjectsToRemove.Clear();
+
         }
 
         public static void AddObject(BaseObject obj) {
-            Allobjects.Add(obj);
-            if (obj is ICollision)
-                collidableObjects.Add(obj as ICollision);
+
+            ObjectsToAdd.Add(obj);
+ 
         }
 
         public static void Draw(SpriteBatch spriteBatch) {
@@ -46,10 +67,6 @@ namespace topDownShooter {
             foreach (BaseObject obj in Allobjects) {
                 obj.Draw(spriteBatch);
             }
-        }
-
-        public static void newPistolBullet(Vector2 target, Vector2 orgpos) {
-            Allobjects.Add(new PistolBullet(target, orgpos));
         }
 
     }
