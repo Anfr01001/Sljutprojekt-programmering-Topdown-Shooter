@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace topDownShooter {
-    class player: BaseObject, ICollision {
+    class player : BaseObject, ICollision {
 
         //String så att direction kan vara samma namn som spriten blir tydligare
         private string direction;
@@ -26,7 +26,7 @@ namespace topDownShooter {
         private float tempY;
 
         public void Player() {
-            
+            size = 40;
         }
 
         public Rectangle CollisionBox {

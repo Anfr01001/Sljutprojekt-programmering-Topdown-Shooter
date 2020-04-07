@@ -16,6 +16,7 @@ namespace topDownShooter {
 
         static List<bulletBase> bulletList = new List<bulletBase>();
 
+        static public BaseObject player;
 
         public static void Update(GameTime gameTime) {
             foreach (BaseObject obj in Allobjects) {
@@ -59,7 +60,8 @@ namespace topDownShooter {
         public static void AddObject(BaseObject obj) {
 
             ObjectsToAdd.Add(obj);
- 
+            if (obj is player)
+                player = obj as BaseObject;
         }
 
         public static void Draw(SpriteBatch spriteBatch) {

@@ -21,6 +21,12 @@ namespace topDownShooter {
         public static Texture2D PlayerLeft;
         public static Texture2D PlayerDead;
 
+        public static Texture2D TombStone;
+
+        public static Texture2D Fly1;
+
+        public static SpriteFont textfont;
+
         public static void CreatePixel(GraphicsDevice device) {
             //Standrad texture för test
             Pixel = new Texture2D(device, 1, 1);
@@ -28,8 +34,12 @@ namespace topDownShooter {
         }
 
         public static void LoadContent(ContentManager content) {
+            textfont = content.Load<SpriteFont>("Text");
             Rock = content.Load<Texture2D>("Rock");
             Grass = content.Load<Texture2D>("Grass");
+            TombStone = content.Load<Texture2D>("TombStone");
+
+            Fly1 = content.Load<Texture2D>("Enemy1.1");
 
             PlayerFront = content.Load<Texture2D>("Player Front");
             PlayerBack = content.Load<Texture2D>("Player Back");

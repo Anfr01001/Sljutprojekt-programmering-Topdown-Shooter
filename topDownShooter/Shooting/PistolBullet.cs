@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 namespace topDownShooter {
     class PistolBullet : bulletBase{
 
-        int damage = 10;
         float speed = 10;
         Vector2 target;
         Vector2 direction = Vector2.Zero;
@@ -19,6 +18,7 @@ namespace topDownShooter {
             this.shooter = shooter;
             rectangle = new Rectangle((int)pos.X, (int)pos.Y, 7, 7);
             direction = (Vector2.Normalize(Vector2.Subtract(pos, target)));
+            damage = 10;
         }
 
         public override void Update(GameTime gameTime) {

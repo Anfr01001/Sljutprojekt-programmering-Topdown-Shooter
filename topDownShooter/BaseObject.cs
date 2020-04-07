@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 namespace topDownShooter {
     class BaseObject {
 
-        protected Vector2 pos = new Vector2(60, 60);
+        public Vector2 pos = new Vector2(60, 60);
         protected Rectangle rectangle;
         protected Color color = Color.White;
         protected int size = 50;
@@ -23,6 +23,7 @@ namespace topDownShooter {
 
         public virtual void Draw(SpriteBatch spriteBatch) {
             spriteBatch.Draw(texture, rectangle, color);
+            spriteBatch.DrawString(Assets.textfont, "TEST", Vector2.Zero, Color.Black);
         }
 
     }

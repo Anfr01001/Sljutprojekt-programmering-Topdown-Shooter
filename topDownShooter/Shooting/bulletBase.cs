@@ -9,6 +9,7 @@ namespace topDownShooter {
     class bulletBase : BaseObject, ICollision {
 
         protected BaseObject shooter;
+        protected int damage;
 
         public bulletBase() {
 
@@ -25,6 +26,8 @@ namespace topDownShooter {
             if(obj != shooter && !(obj is bulletBase)) {
                 dead = true;
                 //Om object kan ta damage gör det
+                if (obj is EnemyBase)
+                    (obj as EnemyBase).TakeDamage(damage);
             }
         }
 
