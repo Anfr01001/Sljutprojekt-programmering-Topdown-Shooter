@@ -24,6 +24,7 @@ namespace topDownShooter {
         public static Texture2D TombStone;
 
         public static Texture2D Fly1;
+        public static Texture2D Fly2;
 
         public static SpriteFont textfont;
 
@@ -40,6 +41,7 @@ namespace topDownShooter {
             TombStone = content.Load<Texture2D>("TombStone");
 
             Fly1 = content.Load<Texture2D>("Enemy1.1");
+            Fly2 = content.Load<Texture2D>("Enemy1.2");
 
             PlayerFront = content.Load<Texture2D>("Player Front");
             PlayerBack = content.Load<Texture2D>("Player Back");

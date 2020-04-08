@@ -14,6 +14,7 @@ namespace topDownShooter {
         private Vector2 velocity;
 
         protected int hp;
+        public int damage = 10;
 
         private Vector2 Oldpos = Vector2.Zero;
         private Vector2 direction;

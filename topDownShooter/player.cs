@@ -25,6 +25,8 @@ namespace topDownShooter {
         private float tempX;
         private float tempY;
 
+        protected int hp = 100;
+
         public void Player() {
             size = 40;
         }
@@ -37,8 +39,14 @@ namespace topDownShooter {
         }
 
         public void Collision(BaseObject col) {
+           if(col is MapBlockColission)
+                pos = Oldpos;
 
-            pos = Oldpos;
+            if (col is EnemyBase) {
+                hp -= (col as EnemyBase).damage;
+                if (hp <= 0)
+                    dead = true;
+            }
         }
 
 

@@ -46,6 +46,7 @@
     <Compile Include="Enemy\EnemyBase.cs" />
     <Compile Include="Enemy\EnemyFly.cs" />
     <Compile Include="Healthbar.cs" />
+    <Compile Include="RoundController.cs" />
     <Compile Include="Shooting\PistolBullet.cs" />
     <Compile Include="Shooting\bulletBase.cs" />
     <Compile Include="Game1.cs" />
