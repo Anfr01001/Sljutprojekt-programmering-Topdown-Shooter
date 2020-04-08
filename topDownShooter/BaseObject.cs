@@ -23,7 +23,6 @@ namespace topDownShooter {
 
         public virtual void Draw(SpriteBatch spriteBatch) {
             spriteBatch.Draw(texture, rectangle, color);
-            spriteBatch.DrawString(Assets.textfont, "TEST", Vector2.Zero, Color.Black);
         }
 
     }

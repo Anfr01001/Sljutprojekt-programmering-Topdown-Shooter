@@ -43,8 +43,9 @@
   <ItemGroup>
     <Compile Include="Assets.cs" />
     <Compile Include="BaseObject.cs" />
-    <Compile Include="EnemyBase.cs" />
-    <Compile Include="EnemyFly.cs" />
+    <Compile Include="Enemy\EnemyBase.cs" />
+    <Compile Include="Enemy\EnemyFly.cs" />
+    <Compile Include="Healthbar.cs" />
     <Compile Include="Shooting\PistolBullet.cs" />
     <Compile Include="Shooting\bulletBase.cs" />
     <Compile Include="Game1.cs" />

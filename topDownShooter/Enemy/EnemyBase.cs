@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,10 @@ namespace topDownShooter {
 
         private BaseObject target;
 
+        protected Healthbar hpbar;
+
         public EnemyBase() {
+
             target = ObjectManager.player;
 
                 switch (r.Next(0, 5)) {
@@ -66,6 +70,13 @@ namespace topDownShooter {
             direction = (Vector2.Normalize(Vector2.Subtract(pos, target.pos)));
             pos -= direction * speed;
             rectangle = new Rectangle((int)pos.X, (int)pos.Y, 40, 40);
+
+            hpbar.Update(hp, new Vector2(pos.X, pos.Y));
+        }
+
+        public override void Draw(SpriteBatch spriteBatch) {
+            hpbar.Draw(spriteBatch);
+            base.Draw(spriteBatch);
         }
     }
 }
