@@ -19,13 +19,15 @@ namespace topDownShooter {
         private Vector2 Oldpos = Vector2.Zero;
         private Vector2 direction;
 
-        Random r = new Random();
+        Random r;
 
         private BaseObject target;
 
         protected Healthbar hpbar;
 
-        public EnemyBase() {
+        public EnemyBase(int seed) {
+
+             r = new Random(seed);
 
             target = ObjectManager.player;
 
@@ -42,7 +44,7 @@ namespace topDownShooter {
                 case 4:
                     pos = new Vector2(50, 700);
                     break;
-            }
+                }
 
             //Fixa random spawn.
             rectangle = new Rectangle((int)pos.X, (int)pos.Y, 40, 40);

@@ -47,11 +47,12 @@ namespace topDownShooter
         protected override void Update(GameTime gameTime)
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                ObjectManager.AddObject(new EnemyFly());
+                ObjectManager.AddObject(new EnemyFly(100));
                 
                 //Map.BuildMap();
 
                 ObjectManager.Update(gameTime);
+                RoundController.Update(gameTime);
 
                 base.Update(gameTime);
         }
@@ -61,10 +62,10 @@ namespace topDownShooter
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             spriteBatch.Begin();
-
             ObjectManager.Draw(spriteBatch);
+            RoundController.Draw(spriteBatch);
             spriteBatch.End();
-
+            
             base.Draw(gameTime);
         }
     }

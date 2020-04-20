@@ -12,7 +12,7 @@ namespace topDownShooter {
         private float timeperframe = 0.2f; //s
         private float lastftametime = 0f;
 
-        public EnemyFly() {
+        public EnemyFly(int seed) : base (seed) {
             texture = Assets.Fly1;
             speed = 5;
             hp = 100;
