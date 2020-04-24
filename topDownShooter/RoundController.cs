@@ -22,13 +22,16 @@ namespace topDownShooter {
         static int round = 1;
         static bool playing = false;
         static int spawnpoints = 1;
-        static double tidmellanrunda = 5;
+        static double tidmellanrunda = 10;
         static double RoundStartTime = 0;
         static double temp1;
         static List<EnemyBase> Enemylist = new List<EnemyBase>();
 
         static double tidmellanFiende = 1;
         static double senastefiende = 0;
+
+        static bool RoundWaitning = false;
+        static double timeleft;
 
 
 
@@ -37,14 +40,16 @@ namespace topDownShooter {
             //kolla om sp det inte finns mer fienden att spawna
             if (Enemylist.Count == 0){
                 //Ge tid mellan rundorna
-                if ((temp1 = gameTime.TotalGameTime.TotalSeconds) > RoundStartTime + tidmellanrunda){
+                if ((gameTime.TotalGameTime.TotalSeconds) > RoundStartTime + tidmellanrunda){
                     RoundStartTime = gameTime.TotalGameTime.TotalSeconds;
                     //Välj fienden
                     spawnpoints = (int)Math.Ceiling((double)round*1.2);
                     PickEnemyes();
                     round++;
-
+                    RoundWaitning = false;
                 }
+                    RoundWaitning = true;
+                    timeleft = (RoundStartTime + tidmellanrunda) - gameTime.TotalGameTime.TotalSeconds;
             } else {
                 if( gameTime.TotalGameTime.TotalSeconds > senastefiende + tidmellanFiende) {
                     senastefiende = gameTime.TotalGameTime.TotalSeconds;
@@ -52,6 +57,7 @@ namespace topDownShooter {
                     ObjectManager.AddObject(Enemylist[0]);
                     Enemylist.Remove(Enemylist[0]);
                 }
+                RoundStartTime = gameTime.TotalGameTime.TotalSeconds;
             }
 
             
@@ -69,9 +75,12 @@ namespace topDownShooter {
 
        public static void Draw(SpriteBatch spriteBatch) {
 
-             spriteBatch.DrawString(Assets.textfont, "Enemylist.Count " + Enemylist.Count , Vector2.Zero, Color.Black);
-             spriteBatch.DrawString(Assets.textfont, "Time " + temp1 , new Vector2(0, 20), Color.Black);
-            spriteBatch.DrawString(Assets.textfont, "NextWave " + (RoundStartTime + tidmellanrunda) , new Vector2(0, 40), Color.Black);
+             spriteBatch.DrawString(Assets.textfont, "Runda " + round , Vector2.Zero, Color.Black);
+            if (RoundWaitning){
+                spriteBatch.DrawString(Assets.textfont, "Time " + timeleft , new Vector2(0, 20), Color.Black);
+            }
+             //spriteBatch.DrawString(Assets.textfont, "Time " + temp1 , new Vector2(0, 20), Color.Black);
+             //spriteBatch.DrawString(Assets.textfont, "NextWave " + (RoundStartTime + tidmellanrunda) , new Vector2(0, 40), Color.Black);
        }
 
     }

@@ -24,7 +24,7 @@ namespace topDownShooter
         protected override void Initialize()
         {
             Assets.LoadContent(Content);
-
+            StartMeny.active = true;
             base.Initialize();
         }
 
@@ -48,11 +48,18 @@ namespace topDownShooter
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 ObjectManager.AddObject(new EnemyFly(100));
-                
-                //Map.BuildMap();
 
+            if (StartMeny.active) {
+                if (Mouse.GetState().LeftButton == ButtonState.Pressed)
+                StartMeny.klickCheck(Mouse.GetState().Position);
+            } else if (false) { // För köpmeny
+
+            } else {
                 ObjectManager.Update(gameTime);
                 RoundController.Update(gameTime);
+            }
+
+                
 
                 base.Update(gameTime);
         }
@@ -62,8 +69,14 @@ namespace topDownShooter
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             spriteBatch.Begin();
-            ObjectManager.Draw(spriteBatch);
-            RoundController.Draw(spriteBatch);
+            if (StartMeny.active) {
+                StartMeny.draw(spriteBatch);
+            } else if (false) { // För köpmeny
+
+            } else {
+                ObjectManager.Draw(spriteBatch);
+                RoundController.Draw(spriteBatch);
+            }
             spriteBatch.End();
             
             base.Draw(gameTime);
