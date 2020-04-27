@@ -21,6 +21,8 @@ namespace topDownShooter {
         public static Texture2D PlayerLeft;
         public static Texture2D PlayerDead;
 
+        public static Texture2D shoppcart;
+
         public static Texture2D TombStone;
 
         public static Texture2D Fly1;
@@ -48,6 +50,8 @@ namespace topDownShooter {
             PlayerRight = content.Load<Texture2D>("Player Right");
             PlayerLeft = content.Load<Texture2D>("Player Left");
             PlayerDead = content.Load<Texture2D>("Player dead");
+
+            shoppcart = content.Load<Texture2D>("shoppcart");
 
         }
     }

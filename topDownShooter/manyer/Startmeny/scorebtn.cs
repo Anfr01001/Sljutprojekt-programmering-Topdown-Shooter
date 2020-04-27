@@ -12,7 +12,9 @@ namespace topDownShooter {
         }
 
         public override void KlickOn() {
-            //öppna scoreboard
+            StartMeny.active = false;
+            buyMeny.active = true;
+
         }
     }
 }

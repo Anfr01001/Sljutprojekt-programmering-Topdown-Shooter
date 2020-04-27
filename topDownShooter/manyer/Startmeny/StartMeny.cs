@@ -13,8 +13,8 @@ namespace topDownShooter {
         static Rectangle temp;
 
         static List<button> buttonList = new List<button>() {
-            new Startbtn(new Point(300, 100), new Point(200, 200), "Start", Color.Green),         //StartKnapp
-            new scorebtn(new Point(300, 100), new Point(200, 400), "ScoreBoard", Color.Green)     //scoreboard
+            new Startbtn(new Point(300, 100), new Point(200, 200), "Start", Color.Yellow),         //StartKnapp
+            new scorebtn(new Point(300, 100), new Point(200, 400), "ScoreBoard", Color.Yellow)     //scoreboard
         };
             
         public static void draw(SpriteBatch spriteBatch) {

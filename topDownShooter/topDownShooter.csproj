@@ -50,6 +50,7 @@
     <Compile Include="Enemy\EnemyBase.cs" />
     <Compile Include="Enemy\EnemyFly.cs" />
     <Compile Include="Healthbar.cs" />
+    <Compile Include="Shooting\RifleSpray.cs" />
     <Compile Include="RoundController.cs" />
     <Compile Include="manyer\Startmeny\scorebtn.cs" />
     <Compile Include="Shooting\PistolBullet.cs" />

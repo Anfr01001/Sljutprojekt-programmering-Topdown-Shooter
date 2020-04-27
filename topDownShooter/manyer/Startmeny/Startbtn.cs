@@ -14,6 +14,7 @@ namespace topDownShooter {
 
         public override void KlickOn() {
             StartMeny.active = false;
+            
         }
     }
 }

@@ -19,17 +19,15 @@ namespace topDownShooter {
 
         KeyboardState Kstate;
 
+        MouseState OldmouseState;
+
         private Vector2 Oldpos = Vector2.Zero;
 
-        //båda dessa är temp används bara i en funktion
-        private float tempX;
-        private float tempY;
+        public string weapon = "Pistol";
 
-        protected int hp = 100;
+        public int hp = 5;
 
-        public void Player() {
-            size = 40;
-        }
+        Random r = new Random();
 
         public Rectangle CollisionBox {
             get {
@@ -46,17 +44,43 @@ namespace topDownShooter {
                 hp -= (col as EnemyBase).damage;
                 if (hp <= 0)
                     dead = true;
+
+                col.dead = true;
             }
         }
-
 
         public override void Update(GameTime gameTime) {
             center = new Vector2(pos.X + (size / 2), pos.Y + (size / 2));
 
+
             texture = Assets.PlayerFront;
-            if (Mouse.GetState().LeftButton == ButtonState.Pressed) {
-                ObjectManager.AddObject(new PistolBullet(Mouse.GetState().Position.ToVector2(), center, this));
+            if((Mouse.GetState().LeftButton == ButtonState.Pressed)){
+                switch (weapon) {
+                    case "Pistol":
+                        if(OldmouseState.LeftButton == ButtonState.Released)
+                            ObjectManager.AddObject(new PistolBullet(Mouse.GetState().Position.ToVector2(), center, this, 0, 8));
+                        break;
+
+                    case "Rifle":
+                        if (OldmouseState.LeftButton == ButtonState.Released) {
+                            for (int i = 0; i < 10; i++) {
+                                ObjectManager.AddObject(new PistolBullet(Mouse.GetState().Position.ToVector2(), center, this, r.Next(5, 50), r.Next(7, 11)));
+                            }
+                        }
+                        break;
+
+                    case "MachineGun":
+                        if (OldmouseState.LeftButton == ButtonState.Released) {
+                            for (int i = 0; i < 15; i++) {
+                                ObjectManager.AddObject(new PistolBullet(Mouse.GetState().Position.ToVector2(), center, this, r.Next(5, 30), i+5));
+                            }
+                        }
+                        break;
+                }
             }
+
+
+            OldmouseState = Mouse.GetState();
 
             Movement();
         }
