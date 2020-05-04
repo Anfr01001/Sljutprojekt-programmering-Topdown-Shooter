@@ -43,16 +43,18 @@
   <ItemGroup>
     <Compile Include="Assets.cs" />
     <Compile Include="BaseObject.cs" />
-    <Compile Include="button.cs" />
+    <Compile Include="Enemy\Enemy2.cs" />
+    <Compile Include="manyer\button.cs" />
+    <Compile Include="manyer\buyMeny\buyMachineGunbtn.cs" />
     <Compile Include="manyer\buyMeny\buyHpbtn.cs" />
     <Compile Include="manyer\buyMeny\buyMeny.cs" />
     <Compile Include="manyer\buyMeny\buyRiflebtn.cs" />
     <Compile Include="Enemy\EnemyBase.cs" />
     <Compile Include="Enemy\EnemyFly.cs" />
     <Compile Include="Healthbar.cs" />
+    <Compile Include="manyer\Startmeny\scoreBoard.cs" />
     <Compile Include="Shooting\RifleSpray.cs" />
     <Compile Include="RoundController.cs" />
-    <Compile Include="manyer\Startmeny\scorebtn.cs" />
     <Compile Include="Shooting\PistolBullet.cs" />
     <Compile Include="Shooting\bulletBase.cs" />
     <Compile Include="Game1.cs" />

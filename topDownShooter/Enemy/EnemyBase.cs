@@ -46,7 +46,6 @@ namespace topDownShooter {
                     break;
                 }
 
-            //Fixa random spawn.
             rectangle = new Rectangle((int)pos.X, (int)pos.Y, 40, 40);
             direction = (Vector2.Normalize(Vector2.Subtract(pos, target.pos)));
         }
@@ -64,8 +63,12 @@ namespace topDownShooter {
 
         public void TakeDamage(int damage) {
             hp -= damage;
-            if (hp <= 0)
+            if (hp <= 0) {
                 dead = true;
+                (ObjectManager.player as player).Money++;
+                (ObjectManager.player as player).score++;
+            }
+                
         }
 
         public override void Update(GameTime gameTime) {

@@ -68,8 +68,14 @@ namespace topDownShooter {
             Enemylist.Clear();
 
             while (spawnpoints > 0) {
-                Enemylist.Add(new EnemyFly(r.Next(0,1000)));
-                spawnpoints--;
+
+                if (spawnpoints > 4) {
+                    Enemylist.Add(new Enemy2(r.Next(0, 1000)));
+                    spawnpoints -= 2;
+                } else {
+                    Enemylist.Add(new EnemyFly(r.Next(0, 1000)));
+                    spawnpoints--;
+                }
             }
         }
 
@@ -77,7 +83,7 @@ namespace topDownShooter {
 
              spriteBatch.DrawString(Assets.textfont, "Runda " + round , Vector2.Zero, Color.Black);
             if (RoundWaitning){
-                spriteBatch.DrawString(Assets.textfont, "Time " + timeleft , new Vector2(0, 20), Color.Black);
+                spriteBatch.DrawString(Assets.textfont, "Time " + Math.Round(timeleft) , new Vector2(0, 20), Color.Black);
             }
              //spriteBatch.DrawString(Assets.textfont, "Time " + temp1 , new Vector2(0, 20), Color.Black);
              //spriteBatch.DrawString(Assets.textfont, "NextWave " + (RoundStartTime + tidmellanrunda) , new Vector2(0, 40), Color.Black);

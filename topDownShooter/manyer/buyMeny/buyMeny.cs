@@ -12,8 +12,9 @@ namespace topDownShooter {
         static Rectangle temp;
 
         static List<button> buttonList = new List<button>() {
-            new buyHpbtn(new Point(300, 100), new Point(200, 200), "Buy full hp", Color.Green),      //StartKnapp
-            new buyRiflebtn(new Point(300, 100), new Point(200, 400), "Buy Rifle", Color.Green)     //scoreboard
+            new buyHpbtn(new Point(300, 100), new Point(200, 200), "Buy 1 hp (20)"),     
+            new buyRiflebtn(new Point(300, 100), new Point(200, 400), "Buy Rifle (50)"),
+            new buyMachineGunbtn(new Point(300, 100), new Point(200, 600), "Buy MachineGun (80)")
         };
 
         public static void draw(SpriteBatch spriteBatch) {

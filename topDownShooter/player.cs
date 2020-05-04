@@ -29,6 +29,14 @@ namespace topDownShooter {
 
         Random r = new Random();
 
+        public int score = 0;
+
+        public int Money = 0;
+
+        public player() {
+            size = 45;
+        }
+
         public Rectangle CollisionBox {
             get {
                 return rectangle;
@@ -46,6 +54,8 @@ namespace topDownShooter {
                     dead = true;
 
                 col.dead = true;
+                scoreBoard.UpdateraScoreLista(score.ToString());
+                StartMeny.OpenMenu(true);
             }
         }
 

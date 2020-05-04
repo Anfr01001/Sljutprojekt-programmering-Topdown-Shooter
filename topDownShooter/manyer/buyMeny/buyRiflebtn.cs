@@ -7,13 +7,32 @@ using System.Threading.Tasks;
 
 namespace topDownShooter {
     class buyRiflebtn : button {
-        public buyRiflebtn(Point size, Point pos, string text, Color color) : base(size, pos, text, color) {
 
+        player user = (ObjectManager.player as player);
+        int cost = 50;
+
+        public buyRiflebtn(Point size, Point pos, string text) : base(size, pos, text) {
+            if (user.Money < cost) {
+                color = Color.Red;
+            } else {
+                color = Color.Green;
+            }
         }
 
         public override void KlickOn() {
-            buyMeny.active = false;
-            (ObjectManager.player as player).weapon = "Rifle";
+            if (user.Money >= cost) {
+                buyMeny.active = false;
+                user.weapon = "Rifle";
+                user.Money -= cost;
+            }
+        }
+
+        public override void ColorChange() {
+            if (user.Money < cost) {
+                color = Color.Red;
+            } else {
+                color = Color.Green;
+            }
         }
     }
 }

@@ -6,11 +6,12 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace topDownShooter {
-    class buyHpbtn : button{
+    class buyMachineGunbtn : button {
 
         player user = (ObjectManager.player as player);
-        int cost = 20;
-        public buyHpbtn(Point size, Point pos, string text) : base(size, pos, text) {
+        int cost = 80;
+
+        public buyMachineGunbtn(Point size, Point pos, string text) : base(size, pos, text) {
             if (user.Money < cost) {
                 color = Color.Red;
             } else {
@@ -21,9 +22,10 @@ namespace topDownShooter {
         public override void KlickOn() {
             if (user.Money >= cost) {
                 buyMeny.active = false;
-                user.hp++;
+                user.weapon = "MachineGun";
                 user.Money -= cost;
             }
+            
         }
 
         public override void ColorChange() {
@@ -33,5 +35,6 @@ namespace topDownShooter {
                 color = Color.Green;
             }
         }
+
     }
 }

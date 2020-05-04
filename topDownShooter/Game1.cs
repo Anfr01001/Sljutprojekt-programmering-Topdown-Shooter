@@ -24,7 +24,7 @@ namespace topDownShooter
         protected override void Initialize()
         {
             Assets.LoadContent(Content);
-            StartMeny.active = true;
+            StartMeny.OpenMenu(false);
             base.Initialize();
         }
 
@@ -86,6 +86,8 @@ namespace topDownShooter
                 RoundController.Draw(spriteBatch);
                 spriteBatch.Draw(Assets.shoppcart, new Rectangle(new Point(750, 750), new Point(50)), Color.White);
                 spriteBatch.DrawString(Assets.textfont, "HP: " + (ObjectManager.player as player).hp , new Vector2(0, 40), Color.Black);
+                spriteBatch.DrawString(Assets.textfont, "Money: " + (ObjectManager.player as player).Money, new Vector2(0, 60), Color.Black);
+            
             }
 
             

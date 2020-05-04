@@ -68,7 +68,7 @@ namespace topDownShooter {
 
             foreach (BaseObject obj in Allobjects) {
                 obj.Draw(spriteBatch);
-                spriteBatch.DrawString(Assets.textfont, "Objects colide:  " + collidableObjects.Count, new Vector2(0, 60), Color.Black);
+                spriteBatch.DrawString(Assets.textfont, "Objects colide:  " + collidableObjects.Count, new Vector2(0, 80), Color.Black);
             }
         }
 

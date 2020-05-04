@@ -6,16 +6,16 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace topDownShooter {
-    class EnemyFly : EnemyBase {
-        
+    class Enemy2 : EnemyBase {
+
         //Med frame menas vilken frame animationen är på exempelvis har denna flyg animation bara 2 bilder. 2st "frames"
         private float timeperframe = 0.2f; //s
         private float lastftametime = 0f;
 
-        public EnemyFly(int seed) : base (seed) {
-            texture = Assets.Fly1;
+        public Enemy2(int seed) : base(seed) {
+            texture = Assets.Enemyfly2;
             speed = 5;
-            hp = 30;
+            hp = 50;
             hpbar = new Healthbar(hp, size);
         }
 
@@ -29,10 +29,10 @@ namespace topDownShooter {
             if (gameTime.TotalGameTime.TotalSeconds > lastftametime + timeperframe) {
                 lastftametime = (float)gameTime.TotalGameTime.TotalSeconds;
                 //byt bild.
-                if(texture == Assets.Fly1) {
-                    texture = Assets.Fly2;
+                if (texture == Assets.Enemyfly3) {
+                    texture = Assets.Enemyfly2;
                 } else {
-                    texture = Assets.Fly1;
+                    texture = Assets.Enemyfly3;
                 }
             }
         }

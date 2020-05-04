@@ -12,23 +12,30 @@ namespace topDownShooter {
         static public bool active = false;
         static Rectangle temp;
 
-        static List<button> buttonList = new List<button>() {
-            new Startbtn(new Point(300, 100), new Point(200, 200), "Start", Color.Yellow),         //StartKnapp
-            new scorebtn(new Point(300, 100), new Point(200, 400), "ScoreBoard", Color.Yellow)     //scoreboard
-        };
+        static button btn = new Startbtn(new Point(300, 100), new Point(200, 200), "Start", Color.Yellow);
+
+        static bool GameOver = false;
+
+        public static void OpenMenu(bool Lost) {
+            scoreBoard.getScoreLista();
+            active = true;
+
+            GameOver = Lost;
+
+        }
             
         public static void draw(SpriteBatch spriteBatch) {
-            foreach(button btn in buttonList) {
+            if (!GameOver)
                 btn.draw(spriteBatch);
-            }
+
+            scoreBoard.Draw(spriteBatch);
         }
 
         public static void klickCheck(Point klickpos) {
             temp = new Rectangle(klickpos, new Point(5, 5));
-            foreach (button btn in buttonList) {
-                if (temp.Intersects(btn.rectangle)) {
-                    btn.KlickOn();
-                }
+
+            if (temp.Intersects(btn.rectangle) && !GameOver) {
+                btn.KlickOn();
             }
         }
     }
