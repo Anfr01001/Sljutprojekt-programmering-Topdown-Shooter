@@ -17,12 +17,11 @@ namespace topDownShooter {
             this.target = target;
             pos = orgpos;
             this.shooter = shooter;
-            //Test
 
             this.speed = speed;
             target.X += r.Next(0, inacurrasy);
             target.Y += r.Next(0, inacurrasy);
-            //test
+
             rectangle = new Rectangle((int)pos.X, (int)pos.Y, 7, 7);
             direction = (Vector2.Normalize(Vector2.Subtract(pos, target)));
             damage = 10;

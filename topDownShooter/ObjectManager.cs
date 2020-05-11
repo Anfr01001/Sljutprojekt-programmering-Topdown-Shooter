@@ -18,6 +18,10 @@ namespace topDownShooter {
 
         static public BaseObject player;
 
+        /// <summary>
+        /// Uppdaterar objekt samt hanterar nya objekt samt döda objekt 
+        /// </summary>
+        /// <param name="gameTime"></param>
         public static void Update(GameTime gameTime) {
             foreach (BaseObject obj in Allobjects) {
                 if (!obj.dead)
@@ -56,7 +60,10 @@ namespace topDownShooter {
             ObjectsToRemove.Clear();
 
         }
-
+        /// <summary>
+        /// Lägget till objekt i listan som väntas på att bli tillaggna nästa frame 
+        /// </summary>
+        /// <param name="gameTime"></param>
         public static void AddObject(BaseObject obj) {
 
             ObjectsToAdd.Add(obj);

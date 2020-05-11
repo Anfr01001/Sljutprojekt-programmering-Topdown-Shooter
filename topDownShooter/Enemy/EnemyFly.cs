@@ -25,6 +25,10 @@ namespace topDownShooter {
             Animation(gameTime);
         }
 
+        /// <summary>
+        /// Används för att byta sprite på fiende för att få den att se animerad ut (vingarna flaxar)
+        /// </summary>
+        /// <param name="gameTime"></param>
         public void Animation(GameTime gameTime) {
             if (gameTime.TotalGameTime.TotalSeconds > lastftametime + timeperframe) {
                 lastftametime = (float)gameTime.TotalGameTime.TotalSeconds;

@@ -62,8 +62,12 @@ namespace topDownShooter {
 
             
                 
-        }  
-        
+        }
+
+        /// <summary>
+        /// Väljer ut en rad fienden utifrån hur många spawnpoints som finns.
+        /// </summary>
+        /// <param name="gameTime"></param>
         public static void PickEnemyes(){
             Enemylist.Clear();
 

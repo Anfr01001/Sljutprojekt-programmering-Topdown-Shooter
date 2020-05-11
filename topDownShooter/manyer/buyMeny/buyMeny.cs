@@ -23,6 +23,11 @@ namespace topDownShooter {
             }
         }
 
+        /// <summary>
+        /// Om ett klick registreras kollar denna om den är inom rektanglen för knappen 
+        /// Den skapar en liten rektangel runk pekaren som kollar om den är inom knappen
+        /// </summary>
+        /// <param name="gameTime"></param>
         public static void klickCheck(Point klickpos) {
             temp = new Rectangle(klickpos, new Point(5, 5));
             foreach (button btn in buttonList) {

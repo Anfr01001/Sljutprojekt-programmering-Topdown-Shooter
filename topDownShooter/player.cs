@@ -95,6 +95,10 @@ namespace topDownShooter {
             Movement();
         }
 
+        /// <summary>
+        /// Hanterar movement för spelaren som ska accelereras förflyttas och ha rätt sprite vid rätt riktning 
+        /// </summary>
+        /// <param name="gameTime"></param>
         private void Movement() {
 
             Kstate = Keyboard.GetState();
